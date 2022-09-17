@@ -27,19 +27,21 @@ def is_prime(num):
     и возвращает True, если число простое.
     Иначе False
     """
-    # чисела меньше двух точно не являются простыми
-    if num > 1:
-        # учтем двойку
-        if num == 2:
-            return True
-        # сразу можем отфильтровать четные числа -- они не простые
-        if num % 2:
-            # ищем делители для num: если находим -- num не простое
-            for i in range(3, num, 2):
-                if not num % i:
-                    return False
-            return True
-    return False
+    # числа меньше двух точно не являются простыми
+    if num <= 1:
+        return False
+    # учтем двойку
+    if num == 2:
+        return True
+    # сразу можем отфильтровать четные числа -- они не простые
+    if not num % 2:
+        return False
+    # ищем делители для num: если находим -- num не простое
+    for i in range(3, num, 2):
+        if not num % i:
+            return False
+    return True
+
 
 
 def filter_numbers(nums, filter_type):
