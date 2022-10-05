@@ -2,6 +2,7 @@
 создайте класс `Plane`, наследник `Vehicle`
 """
 from homework_02.base import Vehicle
+from homework_02.exceptions import CargoOverload
 
 
 class Plane(Vehicle):
@@ -10,8 +11,9 @@ class Plane(Vehicle):
         self.cargo = cargo
         self.max_cargo = max_cargo
 
-
-if __name__ == '__main__':
-    p = Plane()
-    print(p)
-    print(p.__dict__)
+    def load_cargo(self, cargo: float):
+        new_cargo = self.cargo + cargo
+        if new_cargo <= self.max_cargo:
+            self.cargo = new_cargo
+        else:
+            raise CargoOverload
