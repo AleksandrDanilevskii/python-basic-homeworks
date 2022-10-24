@@ -1,3 +1,6 @@
+# Запустить контейнер можно командой
+# sudo docker run -it -p 8000:8000 app
+
 FROM python:3.9-buster
 
 ENV PYTHONUNBUFFERED=1
