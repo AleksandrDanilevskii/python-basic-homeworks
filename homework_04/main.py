@@ -30,13 +30,18 @@ async def create_tables(engine: AsyncEngine, metadata):
         await conn.run_sync(metadata.drop_all)
         await conn.run_sync(metadata.create_all)
 
-    print('tables created')
+    print("tables created")
 
 
 async def create_users(session: AsyncSession, users_json: List[dict]) -> list[User]:
 
     users = [
-        User(id=user_json['id'], name=user_json['name'], username=user_json['username'], email=user_json['email'])
+        User(
+            id=user_json["id"],
+            name=user_json["name"],
+            username=user_json["username"],
+            email=user_json["email"],
+        )
         for user_json in users_json
     ]
     session.add_all(users)
@@ -49,7 +54,12 @@ async def create_users(session: AsyncSession, users_json: List[dict]) -> list[Us
 async def create_posts(session: AsyncSession, posts_json: List[dict]) -> list[Post]:
 
     posts = [
-        Post(id=post_json['id'], title=post_json['title'], body=post_json['body'], user_id=post_json['userId'])
+        Post(
+            id=post_json["id"],
+            title=post_json["title"],
+            body=post_json["body"],
+            user_id=post_json["userId"],
+        )
         for post_json in posts_json
     ]
     session.add_all(posts)

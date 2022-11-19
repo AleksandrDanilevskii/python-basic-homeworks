@@ -12,10 +12,13 @@ import os
 
 from sqlalchemy import Column, Integer, String, ForeignKey, Text
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncEngine, AsyncSession
-from sqlalchemy.orm import sessionmaker, scoped_session, declared_attr, relationship
+from sqlalchemy.orm import sessionmaker, declared_attr, relationship
 from sqlalchemy.orm import declarative_base
 
-PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
+PG_CONN_URI = (
+    os.environ.get("SQLALCHEMY_PG_CONN_URI")
+    or "postgresql+asyncpg://postgres:password@localhost/postgres"
+)
 
 
 class Base:
