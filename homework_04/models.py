@@ -32,12 +32,12 @@ class Base:
 async_engine: AsyncEngine = create_async_engine(url=PG_CONN_URI)
 Base = declarative_base(bind=async_engine, cls=Base)
 
-session_factory = sessionmaker(
+Session = sessionmaker(
     async_engine,
     class_=AsyncSession,
     expire_on_commit=False,
 )
-Session = scoped_session(session_factory)
+# Session = scoped_session(session_factory)
 
 
 class User(Base):

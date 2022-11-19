@@ -16,9 +16,9 @@
 import asyncio
 from typing import List
 
-from sqlalchemy.ext.asyncio import AsyncEngine
+from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession
 
-from homework_04.models import async_engine, Base, User, async_session, AsyncSession, Post, Session
+from homework_04.models import async_engine, Base, User, Post, Session
 from jsonplaceholder_requests import (
     get_users,
     get_posts,
