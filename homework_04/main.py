@@ -18,7 +18,7 @@ from typing import List
 
 from sqlalchemy.ext.asyncio import AsyncEngine
 
-from homework_04.models import async_engine, Base, User, async_session, AsyncSession, Post
+from homework_04.models import async_engine, Base, User, async_session, AsyncSession, Post, Session
 from jsonplaceholder_requests import (
     get_users,
     get_posts,
@@ -72,7 +72,7 @@ async def async_main():
     )
 
     # записываем данные в DB
-    async with async_session() as session:
+    async with Session() as session:
         await create_users(session=session, users_json=users_data)
         await create_posts(session=session, posts_json=posts_data)
 
