@@ -18,7 +18,7 @@ async def fetch_json(url: str) -> List[dict]:
 
 
 async def get_users(
-    url: str = USERS_DATA_URL, fields: List[str] | None = USERS_DATA_FIELDS
+    url: str = USERS_DATA_URL, fields: List[str] = USERS_DATA_FIELDS
 ) -> List[dict] | dict:
     data = await fetch_json(url)
     if fields:
@@ -29,7 +29,7 @@ async def get_users(
 async def get_user(
     user_id: int,
     url: str = USERS_DATA_URL,
-    fields: List[str] | None = USERS_DATA_FIELDS,
+    fields: List[str] = USERS_DATA_FIELDS,
 ) -> dict:
     data = await fetch_json(f"{url}/{user_id}")
     if fields:
