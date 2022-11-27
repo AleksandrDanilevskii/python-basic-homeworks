@@ -19,7 +19,7 @@ async def fetch_json(url: str) -> List[dict]:
 
 async def get_users(
     url: str = USERS_DATA_URL, fields: List[str] = USERS_DATA_FIELDS
-) -> List[dict] | dict:
+) -> List[dict]:
     data = await fetch_json(url)
     if fields:
         return [{field: user[field] for field in fields} for user in data]
@@ -37,7 +37,7 @@ async def get_user(
     return data
 
 
-async def get_posts(url: str = POSTS_DATA_URL) -> List[dict] | dict:
+async def get_posts(url: str = POSTS_DATA_URL) -> List[dict]:
     data = await fetch_json(url)
     return data
 
