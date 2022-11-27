@@ -10,7 +10,7 @@ POSTS_DATA_URL = "https://jsonplaceholder.typicode.com/posts"
 USERS_DATA_FIELDS = ["id", "name", "username", "email"]
 
 
-async def fetch_json(url: str) -> List[dict] | dict:
+async def fetch_json(url: str) -> List[dict]:
     async with aiohttp.ClientSession() as session:
         response = await session.get(url)
         data = await response.json()
