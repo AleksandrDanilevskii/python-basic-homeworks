@@ -1,3 +1,6 @@
+# castom
+*.yaml
+
 # IDEs
 .idea/
 
