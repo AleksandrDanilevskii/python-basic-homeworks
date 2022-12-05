@@ -1,5 +1,6 @@
 # castom
 *.yaml
+bootstrap*
 
 # IDEs
 .idea/
