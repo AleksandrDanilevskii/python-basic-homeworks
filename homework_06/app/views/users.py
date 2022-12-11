@@ -39,11 +39,7 @@ def get_user_by_id(user_id: int):
     )
 
 
-@users_app.route(
-    "/add/",
-    methods=["GET", "POST"],
-    endpoint="add"
-)
+@users_app.route("/add/", methods=["GET", "POST"], endpoint="add")
 def add_user():
     form = CreateUserForm()
 

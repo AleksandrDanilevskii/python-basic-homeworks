@@ -13,8 +13,8 @@ app = Flask(__name__)
 app.register_blueprint(users_app, url_prefix="/users")
 
 app.config.update(
-    ENV='development',
-    SECRET_KEY='hgjfkdls;a',
+    ENV="development",
+    SECRET_KEY="hgjfkdls;a",
     SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://postgres:password@localhost:5432/postgres",
 )
 
@@ -26,9 +26,9 @@ migrate = Migrate(app, db, compare_type=True)
 
 @app.cli.command("db-create-test-users")
 def db_create_test_users():
-    '''
+    """
     Создание тестовых пользователей из метода https://jsonplaceholder.typicode.com/users
-    '''
+    """
     users_json = get_users_from_api()
     users = [
         User(
@@ -50,7 +50,6 @@ def db_create_test_users():
         raise BadRequest("Could not create test users")
 
 
-@app.route('/', endpoint='index_page')
+@app.route("/", endpoint="index_page")
 def get_root():
-    return render_template("index.html", now='now')
-
+    return render_template("index.html", now="now")

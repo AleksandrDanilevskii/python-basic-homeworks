@@ -13,12 +13,12 @@ class CreateUserForm(FlaskForm):
         ],
     )
     username = StringField(
-            label="Username",
-            name="username",
-            validators=[
-                DataRequired(),
-                Length(min=3),
-            ],
+        label="Username",
+        name="username",
+        validators=[
+            DataRequired(),
+            Length(min=3),
+        ],
         # render_kw={'class': 'form-control'}
     )
     email = StringField(
@@ -32,20 +32,20 @@ class CreateUserForm(FlaskForm):
     address = TextAreaField(
         label="Address",
         name="address",
-        default='',
+        default="",
     )
     phone = StringField(
         label="Phone",
         name="phone",
-        default='',
+        default="",
     )
     website = StringField(
         label="Website",
         name="website",
-        default='',
+        default="",
     )
     company = StringField(
         label="Company",
         name="company",
-        default='',
+        default="",
     )
