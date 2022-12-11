@@ -54,7 +54,3 @@ def db_create_test_users():
 def get_root():
     return render_template("index.html", now='now')
 
-
-@app.route('/about/', endpoint='about_page')
-def get_about():
-    return render_template("about.html")
