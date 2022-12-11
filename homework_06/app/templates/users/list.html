@@ -5,13 +5,24 @@
 {% endblock %}
 
 {% block body %}
-  <h1>Users:</h1>
-  <ul>
-    {% for user_id, user_name in users.items() %}
-      <li>
-        <a href="{{ url_for('users_app.details', user_id=user_id) }}"
-        >{{ user_name }}</a>
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="h1 mb-2">Users:</div>
+  {% if users %}
+
+    <div class="list-group list-group-numbered">
+      {% for user in users %}
+        <a href="{{ url_for('users_app.details', user_id=user.id) }}" class="list-group-item list-group-item-action">
+
+            <div class="ms-2 me-auto">
+              <h5 class="mb-1">
+                {{ user.name }}
+              </h5>
+              {{user.email}}
+            </div>
+        </a>
+      {% endfor %}
+    </div>
+
+  {% else %}
+    <h2> No users yet</h2>
+  {% endif %}
 {% endblock %}

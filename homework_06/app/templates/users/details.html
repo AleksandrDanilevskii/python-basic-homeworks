@@ -1,14 +1,49 @@
 {% extends 'base.html' %}
 
 {% block title %}
-  User #{{ user_id }}
+  Client #{{ user_id }}
 {% endblock %}
 
 {% block body %}
-  <h1>User <code>{{ user_name }}</code> details</h1>
+  <div class="card" style="width: 32rem;">
+    <div class="card-body">
+      <div class="h5 card-title">User <code>#{{ user.id }}</code> details</div>
+      <p class="card-text">
 
-  <div>
-    <a href="{{ url_for('users_app.list') }}"
-    >Back to users list</a>
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Name</span></th>
+            <td>{{user.name}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Username</span></th>
+            <td>{{user.username}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Email</span></th>
+            <td>{{user.email}}</td>
+          </tr>
+        <tr>
+            <th scope="row"><span class="badge bg-secondary">Address</span></th>
+            <td>{{user.address}}</td>
+          </tr>
+        <tr>
+            <th scope="row"><span class="badge bg-secondary">Phone</span></th>
+            <td>{{user.phone}}</td>
+          </tr>
+        <tr>
+            <th scope="row"><span class="badge bg-secondary">Website</span></th>
+            <td>{{user.website}}</td>
+          </tr>
+        <tr>
+            <th scope="row"><span class="badge bg-secondary">Company</span></th>
+            <td>{{user.company}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
   </div>
+
 {% endblock %}

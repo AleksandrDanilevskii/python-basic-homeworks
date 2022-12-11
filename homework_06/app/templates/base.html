@@ -30,6 +30,7 @@
                 ('index_page', 'Home'),
                 ('about_page', 'About'),
                 ('users_app.list', 'Users'),
+                ('users_app.add', 'Add user'),
                 ] %}
                 {% set path = url_for(endpoint) %}
                 <li class="nav-item">
@@ -44,12 +45,25 @@
     </div>
 </nav>
 
-<div class="container-md text-left">
+<div class="container-fluid text-left">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ 'primary' if category == 'message' else category }}"
+                     role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
     {% block body %}
 
     {% endblock %}
 </div>
 
+<br>
+<br>
 &copy; A. Danilevsky 2022
 
 <!-- Optional JavaScript -->
