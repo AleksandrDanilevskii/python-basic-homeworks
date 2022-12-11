@@ -1,12 +1,13 @@
-from flask import Blueprint, render_template, request, url_for, redirect
-from werkzeug.exceptions import NotFound
+from flask import Blueprint, render_template, request, url_for, redirect, flash
+from sqlalchemy.exc import IntegrityError
+from werkzeug.exceptions import NotFound, BadRequest
+from models import User, db
 
-from forms.users import CreateUserForm
+from .forms.users import CreateUserForm
 
 users_app = Blueprint(
     "users_app",
     __name__,
-    # url_prefix="/products",
 )
 
 
@@ -19,29 +20,29 @@ USERS = {
 
 @users_app.route("/", endpoint="list")
 def users_list():
+    users = User.query.all()
     return render_template(
         "users/list.html",
-        users=USERS,
-        # products=PRODUCTS.items(),
+        users=users,
     )
 
 
 @users_app.route("/<int:user_id>/", endpoint="details")
 def get_user_by_id(user_id: int):
-    user_name = USERS.get(user_id)
-    if user_name is None:
-        raise NotFound(f"User #{user_id} not found!")
+    user = User.query.get_or_404(
+        user_id,
+        description=f"User #{user_id} not found!",
+    )
     return render_template(
         "users/details.html",
-        user_id=user_id,
-        user_name=user_name,
+        user=user,
     )
 
 
 @users_app.route(
     "/add/",
     methods=["GET", "POST"],
-    endpoint="add_user"
+    endpoint="add"
 )
 def add_user():
     form = CreateUserForm()
@@ -52,10 +53,31 @@ def add_user():
     if not form.validate_on_submit():
         return render_template("users/add.html", form=form), 400
 
-    user_name = form.name.data
-    user_id = len(USERS) + 1
-    USERS[user_id] = user_name
+    name = form.name.data
+    username = form.username.data
+    email = form.email.data
+    address = form.address.data
+    phone = form.phone.data
+    website = form.website.data
+    company = form.company.data
+    user = User(
+        name=name,
+        username=username,
+        email=email,
+        address=address,
+        phone=phone,
+        website=website,
+        company=company,
+    )
 
-    # flash(f"Successfully added product {product_name}!")
-    url = url_for("users_app.details", user_id=user_id)
+    db.session.add(user)
+
+    try:
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
+        raise BadRequest(f"Could not create user {name!r}")
+
+    flash(f"Successfully added user {name}!")
+    url = url_for("users_app.details", user_id=user.id)
     return redirect(url)
