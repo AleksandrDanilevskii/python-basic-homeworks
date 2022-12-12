@@ -1,7 +1,11 @@
+from os import getenv
+
 from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_wtf import CSRFProtect
+
 from sqlalchemy.exc import IntegrityError
+
 from werkzeug.exceptions import BadRequest
 
 from request_test_users import get_users_from_api
@@ -12,14 +16,12 @@ from models import db, User
 app = Flask(__name__)
 app.register_blueprint(users_app, url_prefix="/users")
 
-app.config.update(
-    ENV="development",
-    SECRET_KEY="hgjfkdls;a",
-    SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://postgres:password@localhost:5432/postgres",
-)
+CONFIG_OBJECT = getenv("CONFIG", "DevelopmentConfig")
+app.config.from_object(f"config.{CONFIG_OBJECT}")
 
 csft = CSRFProtect(app)
 
+db.app = app
 db.init_app(app)
 migrate = Migrate(app, db, compare_type=True)
 
