@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Index page
+{% endblock %}
+
+{% block body %}
+<h1>Test app for users and posts</h1>
+<ul>
+    <li> Current user: {{user.username|default:"Anonymous"}} </li>
+    <li> Current time: {{ now }} </li>
+</ul>
+
+{% endblock %}
