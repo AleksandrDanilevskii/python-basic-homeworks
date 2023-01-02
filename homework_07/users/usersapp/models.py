@@ -13,3 +13,11 @@ class User(models.Model):
     def __str__(self):
         return f'{self.name} ({self.username})'
 
+
+class Post(models.Model):
+    title = models.CharField(verbose_name='title', max_length=128, blank=False)
+    body = models.TextField(verbose_name='body', blank=True)
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
+
+    def __str__(self):
+        return f'{self.title} ({self.author.username})'
