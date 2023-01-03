@@ -10,7 +10,9 @@ User list page
 
     <div class="list-group list-group-numbered">
       {% for user in object_list %}
-        <a href="{% url 'user' pk=user.pk%}">{{ user.name }} ({{ user.username }})</a>
+        <li class="list-group-item">
+          <a href="{% url 'user' pk=user.pk%}">{{ user.name }} ({{ user.username }})</a>
+        </li>
       {% endfor %}
     </div>
 
