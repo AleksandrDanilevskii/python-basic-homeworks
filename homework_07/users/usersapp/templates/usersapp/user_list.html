@@ -5,12 +5,16 @@ User list page
 {% endblock %}
 
 {% block body %}
-<h1>Список пользователей</h1>
+  <div class="h1 mb-2">Users:</div>
+  {% if object_list %}
 
-<ul>
-        {% for user in object_list %}
-            <li> <a href="{% url 'user' pk=user.pk%}">{{ user.name }} ({{ user.username }})</a></li>
-        {% endfor %}
-</ul>
+    <div class="list-group list-group-numbered">
+      {% for user in object_list %}
+        <a href="{% url 'user' pk=user.pk%}">{{ user.name }} ({{ user.username }})</a>
+      {% endfor %}
+    </div>
 
+  {% else %}
+    <h2> No users yet</h2>
+  {% endif %}
 {% endblock %}
