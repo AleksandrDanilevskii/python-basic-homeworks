@@ -16,11 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from usersapp.views import main_page, UsersListView
+from usersapp.views import main_page, UsersListView, UsersDetailView
 
 urlpatterns = [
     path('', main_page),
     path('users/', UsersListView.as_view(), name='users'),
+    path('user/<int:pk>', UsersDetailView.as_view(), name='user'),
     path("admin/", admin.site.urls),
     path('__debug__/', include('debug_toolbar.urls')),
 ]

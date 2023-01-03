@@ -7,18 +7,10 @@ User list page
 {% block body %}
 <h1>Список пользователей</h1>
 
-<h3>Users list:</h3>
 <ul>
-        {% for u in users %}
-            <li>{{ u.name }} ({{ u.username }})</li>
+        {% for user in object_list %}
+            <li> <a href="{% url 'user' pk=user.pk%}">{{ user.name }} ({{ user.username }})</a></li>
         {% endfor %}
-</ul>
-
-
-<h4>Users list:</h4>
-<ul>
-    <li> Current user: {{user.username|default:"Anonymous"}} </li>
-    <li> Current time: {{ now }} </li>
 </ul>
 
 {% endblock %}
