@@ -7,6 +7,12 @@ Index page
 {% block body %}
 <h1>Test app for users and posts</h1>
 
+<ul>
+    <li>
+        <a href="{% url 'users' %}">Пользователи</a>
+    </li>
+</ul>
+
 <h3>Users list:</h3>
 <ul>
         {% for u in users %}

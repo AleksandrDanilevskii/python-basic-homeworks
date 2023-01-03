@@ -1,6 +1,7 @@
 import datetime
 
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from usersapp.models import User
 
@@ -12,3 +13,7 @@ def main_page(request):
         'users': users,
     }
     return render(request, 'usersapp/index.html', context=context)
+
+
+class UsersListView(ListView):
+    model = User
