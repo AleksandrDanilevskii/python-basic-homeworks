@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+User list page
+{% endblock %}
+
+{% block body %}
+<h1>Список пользователей</h1>
+
+<h3>Users list:</h3>
+<ul>
+        {% for u in users %}
+            <li>{{ u.name }} ({{ u.username }})</li>
+        {% endfor %}
+</ul>
+
+
+<h4>Users list:</h4>
+<ul>
+    <li> Current user: {{user.username|default:"Anonymous"}} </li>
+    <li> Current time: {{ now }} </li>
+</ul>
+
+{% endblock %}
