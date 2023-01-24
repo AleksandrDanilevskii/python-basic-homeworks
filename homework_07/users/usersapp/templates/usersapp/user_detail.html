@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+User {{ object.username }} details
+{% endblock %}
+
+{% block body %}
+  <div class="card" style="width: 32rem;">
+    <div class="card-body">
+      <div class="h5 card-title">User <code>#{{ object.id }}</code> details</div>
+      <p class="card-text">
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Name</span></th>
+            <td>{{object.name}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Username</span></th>
+            <td>{{object.username}}</td>
+          </tr>
+          <tr>
+            <th scope="row"><span class="badge bg-secondary">Email</span></th>
+            <td>{{object.email}}</td>
+          </tr>
+        <tr>
+            <th scope="row"><span class="badge bg-secondary">Address</span></th>
+            <td>{{object.address}}</td>
+          </tr>
+        <tr>
+            <th scope="row"><span class="badge bg-secondary">Phone</span></th>
+            <td>{{object.phone}}</td>
+          </tr>
+        <tr>
+            <th scope="row"><span class="badge bg-secondary">Website</span></th>
+            <td>{{object.website}}</td>
+          </tr>
+        <tr>
+            <th scope="row"><span class="badge bg-secondary">Company</span></th>
+            <td>{{object.company}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+
+{% endblock %}

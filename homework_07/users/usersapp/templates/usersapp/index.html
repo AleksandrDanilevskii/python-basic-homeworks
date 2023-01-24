@@ -7,15 +7,7 @@ Index page
 {% block body %}
 <h1>Test app for users and posts</h1>
 
-<h3>Users list:</h3>
-<ul>
-        {% for u in users %}
-            <li>{{ u.name }} ({{ u.username }})</li>
-        {% endfor %}
-</ul>
-
-
-<h4>Info:</h4>
+<h5>Info</h5>
 <ul>
     <li> Current user: {{user.username|default:"Anonymous"}} </li>
     <li> Current time: {{ now }} </li>
