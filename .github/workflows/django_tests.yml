@@ -31,3 +31,4 @@ jobs:
         cd homework_07/users
         pwd
         ls
+        python manage.py test
