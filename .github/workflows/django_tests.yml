@@ -24,6 +24,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+    - name: Move to django project
+      run: |
+        pwd
+        cd homework_07/users
+        pwd
     - name: Run Tests
       run: |
         pwd
