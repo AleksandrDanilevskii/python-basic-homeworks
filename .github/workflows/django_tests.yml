@@ -26,7 +26,7 @@ jobs:
         pip install -r requirements.txt
     - name: Move to django project folder
       run: |
-        cd ./homework_07/users
+        cd /home/runner/work/python-basic-homeworks/homework_07/users
     - name: Run Tests
       run: |
         python manage.py test
