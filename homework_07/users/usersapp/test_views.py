@@ -35,5 +35,11 @@ class TestView(TestCase):
 
     def test_content(self):
         response = self.client.get('/')
-        btn = '''<a class="nav-link"\n                       href="/users/">\n                        Users\n                    </a>'''.encode(encoding='utf-8')
+        btn = '''<a {0} {1} {2} </a>'''.format(
+            'class="nav-link"\n                      ',
+            'href="/users/">\n                       ',
+            'Users\n                   ',
+        ).encode(
+            encoding='utf-8'
+        )
         self.assertIn(btn, response.content)

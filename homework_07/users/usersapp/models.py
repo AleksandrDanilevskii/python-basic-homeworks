@@ -2,6 +2,8 @@ from django.db import models
 
 
 class User(models.Model):
+    objects = models.Manager()
+
     name = models.CharField(verbose_name='name', max_length=64)
     username = models.CharField(verbose_name='username', max_length=32, unique=True)
     email = models.CharField(verbose_name='email', max_length=64, unique=True)
@@ -15,9 +17,11 @@ class User(models.Model):
 
 
 class Post(models.Model):
+    objects = models.Manager()
+
     title = models.CharField(verbose_name='title', max_length=128, blank=False)
     body = models.TextField(verbose_name='body', blank=True)
     author = models.ForeignKey(User, on_delete=models.PROTECT)
 
     def __str__(self):
-        return f'{self.title} ({self.author.username})'
+        return f'{self.title} ({self.author.name})'

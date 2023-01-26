@@ -1,20 +1,23 @@
 from typing import List
 
 import requests
-from django.core.management.base import BaseCommand, CommandError
+from django.core.management.base import BaseCommand
 
 from usersapp.models import Post, User
 
 
 def get_users_from_api(url: str = "https://jsonplaceholder.typicode.com/users") -> List[dict]:
-    response = requests.get(url)
+    response = requests.get(url, timeout=10)
     data = response.json()
     result = [
         {
             "name": item["name"],
             "username": item["username"],
             "email": item["email"],
-            "address": f"City: {item['address']['city']}, street: {item['address']['street']}, suite: {item['address']['suite']}.",
+            "address":
+                f"City: {item['address']['city']},"
+                f"street: {item['address']['street']},"
+                f"suite: {item['address']['suite']}.",
             "phone": item["phone"],
             "website": item["website"],
             "company": item["company"]["name"],
@@ -25,7 +28,7 @@ def get_users_from_api(url: str = "https://jsonplaceholder.typicode.com/users") 
 
 
 def get_posts_from_api(url: str = "https://jsonplaceholder.typicode.com/posts") -> List[dict]:
-    response = requests.get(url)
+    response = requests.get(url, timeout=10)
     data = response.json()
     result = [
         {

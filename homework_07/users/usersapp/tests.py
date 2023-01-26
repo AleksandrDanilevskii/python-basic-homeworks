@@ -49,4 +49,4 @@ class TestPost(TestCase):
         User.objects.all().delete()
 
     def test_str(self):
-        self.assertEqual(str(self.post), 'Test post (a_danilevsky)')
+        self.assertEqual(str(self.post), 'Test post (Alexander Danilevsky)')
