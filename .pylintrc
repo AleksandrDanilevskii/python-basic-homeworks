@@ -1,0 +1,11 @@
+[MASTER]
+disable=
+    C0114, #for missing-module-docstring
+    C0115, #for missing-class-docstring
+    C0116, #for missing-function-docstring
+    R0801, #for Similar lines
+    C0103  #for invalid-name)
+
+ignore=
+    migrations, #dont work (
+    manage.py
