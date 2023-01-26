@@ -1,6 +1,13 @@
 name: Run tests for homework
 
-on: [push]
+on:
+  push:
+    branches:
+      - HW01
+      - HW02
+      - HW03
+      - HW04
+      - HW05
 
 jobs:
   homework-tests:
