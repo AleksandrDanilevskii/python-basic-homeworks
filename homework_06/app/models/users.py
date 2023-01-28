@@ -2,15 +2,14 @@ from typing import TYPE_CHECKING
 
 from sqlalchemy import Column, String, Integer, Text
 
-# from .base import Base
-from .database import db
+from .base import Base
 
 if TYPE_CHECKING:
     from flask_sqlalchemy.query import Query
 
 
-class User(db.Model):
-    id = Column(Integer, primary_key=True)
+class User(Base):
+    # id = Column(Integer, primary_key=True)
     name = Column(String(64), unique=False)
     username = Column(String(32), unique=True)
     email = Column(String(64), nullable=False)
