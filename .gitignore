@@ -2,6 +2,7 @@
 bootstrap*
 static/
 /python-basic-homeworks/docker-compose.yaml
+*.yaml
 
 # IDEs
 .idea/
