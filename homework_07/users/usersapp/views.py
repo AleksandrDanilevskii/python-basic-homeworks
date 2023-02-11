@@ -1,8 +1,6 @@
 import datetime
-
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-
 from usersapp.models import User, Post
 
 
@@ -23,4 +21,3 @@ class UsersDetailView(DetailView):
 
 class PostsListView(ListView):
     model = Post
-
